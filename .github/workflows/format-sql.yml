@@ -1,4 +1,4 @@
-name: Format SQL Files
+name: Auto Format SQL Files
 
 on:
   pull_request:
@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}  # Ensures the action checks out the correct branch
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -21,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         npm install --save-dev prettier prettier-plugin-sql
-        # Or if you are using sql-formatter:
+        # Or if using sql-formatter:
         # npm install --save-dev sql-formatter
 
     - name: Format SQL files
@@ -30,9 +32,12 @@ jobs:
         # Or if using sql-formatter:
         # npx sql-formatter --config .sql-formatter.json --write '**/*.sql'
 
-    - name: Check for uncommitted changes
+    - name: Commit and push formatted files
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'actions@github.com'
         git add '**/*.sql'
-        git diff --cached --exit-code || (echo 'SQL files are not formatted. Committing changes...' && git commit -m 'Format SQL files' && git push)
+        git diff --cached --quiet || (
+          git commit -m 'Auto-format SQL files'
+          git push
+        )
