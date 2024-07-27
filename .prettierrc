@@ -1,6 +1,7 @@
 {
   "plugins": ["prettier-plugin-sql"],
-  "sql-formatter": {
-    "language": "sql"
+  "sql": {
+    "tabWidth": 2,
+    "useTabs": false
   }
 }
