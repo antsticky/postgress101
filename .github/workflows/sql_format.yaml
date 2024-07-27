@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies
+      - name: Install Prettier and Plugins
         run: |
           npm install -g prettier prettier-plugin-sql
 
