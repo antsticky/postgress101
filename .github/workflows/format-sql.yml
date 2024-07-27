@@ -5,6 +5,9 @@ on:
     paths:
       - '**/*.sql'
 
+permissions:
+  contents: write  # Grant write access to the repository contents
+
 jobs:
   format:
     runs-on: ubuntu-latest
@@ -33,13 +36,11 @@ jobs:
         # npx sql-formatter --config .sql-formatter.json --write '**/*.sql'
 
     - name: Commit and push formatted files
-      env:
-        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'actions@github.com'
         git add '**/*.sql'
         git diff --cached --quiet || (
           git commit -m 'Auto-format SQL files'
-          git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }} HEAD:${{ github.head_ref }}
+          git push
         )
