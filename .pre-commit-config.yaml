@@ -1,0 +1,7 @@
+repos:
+  - repo: https://github.com/prettier/pre-commit-hooks
+    rev: v3.0.0  # Replace with the latest version
+    hooks:
+      - id: prettier
+        files: \.sql$
+        args: ["--config", ".prettierrc"]
