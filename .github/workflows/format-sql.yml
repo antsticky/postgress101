@@ -13,19 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16' # Use the version compatible with your tool
-
-    - name: Install dependencies
-      run: npm install
-
     - name: Format SQL files
+      uses: docker://node:16 # Use a Docker image with Node.js
       run: |
-        npx sql-formatter --config .sql-formatter.json --write '**/*.sql'
-        # or for prettier-plugin-sql
-        npx prettier --write '**/*.sql'
+        npm install -g sql-formatter prettier # Install globally
+        sql-formatter --config .sql-formatter.json --write '**/*.sql'
+        prettier --write '**/*.sql'
 
     - name: Check for uncommitted changes
       run: |
