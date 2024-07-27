@@ -1,0 +1,32 @@
+name: Format SQL Files
+
+on:
+  pull_request:
+    paths:
+      - '**/*.sql'
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Use the version compatible with your tool
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Format SQL files
+      run: |
+        npx sql-formatter --config .sql-formatter.json --write '**/*.sql'
+        # or for prettier-plugin-sql
+        npx prettier --write '**/*.sql'
+
+    - name: Check for uncommitted changes
+      run: |
+        git diff --exit-code || (echo 'SQL files are not formatted. Please format your SQL files before committing.' && exit 1)
