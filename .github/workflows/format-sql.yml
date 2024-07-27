@@ -16,17 +16,23 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16' # Use the version compatible with your tool
+        node-version: '16'
 
     - name: Install dependencies
-      run: npm install --save-dev husky lint-staged
-
-
       run: |
-        npx sql-formatter --config .sql-formatter.json --write '**/*.sql'
-        # or for prettier-plugin-sql
+        npm install --save-dev prettier prettier-plugin-sql
+        # Or if you are using sql-formatter:
+        # npm install --save-dev sql-formatter
+
+    - name: Format SQL files
+      run: |
         npx prettier --write '**/*.sql'
+        # Or if using sql-formatter:
+        # npx sql-formatter --config .sql-formatter.json --write '**/*.sql'
 
     - name: Check for uncommitted changes
       run: |
-        git diff --exit-code || (echo 'SQL files are not formatted. Please format your SQL files before committing.' && exit 1)
+        git config --global user.name 'github-actions'
+        git config --global user.email 'actions@github.com'
+        git add '**/*.sql'
+        git diff --cached --exit-code || (echo 'SQL files are not formatted. Committing changes...' && git commit -m 'Format SQL files' && git push)
