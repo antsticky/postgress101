@@ -18,6 +18,7 @@ FROM
   users
 WHERE
   age >= 25;
+  
 
 -- Select all users and order by age in ascending order
 SELECT
