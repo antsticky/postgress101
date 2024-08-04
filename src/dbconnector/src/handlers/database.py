@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 from dbconnector.src.exceptions.database import DBConnectionError
 
+
 class DBHandler:
     def __init__(
             self,

@@ -1,8 +1,9 @@
 import os
+
 from dotenv import load_dotenv
 
-from dbconnector.src.handlers.database import DBHandler
 from dbconnector.src.exceptions.database import DBConnectionError
+from dbconnector.src.handlers.database import DBHandler
 
 load_dotenv()
 
@@ -13,7 +14,8 @@ def main():
         password=os.getenv("DB_PASSWORD"),
         host=os.getenv("DB_HOST"),
         port=os.getenv("DB_PORT"),
-        db_name=os.getenv("DB_NAME"))
+        db_name=os.getenv("DB_NAME"),
+    )
 
     try:
         connector.get_engine()
