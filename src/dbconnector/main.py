@@ -53,7 +53,7 @@ class DBHandler:
             metadata = MetaData()
             metadata.reflect(bind=engine, only=[table_name])
             return True
-        except AttributeError as e:
+        except AttributeError:
             return False
 
     def create_table(self, table_model: str, engine: Engine):
