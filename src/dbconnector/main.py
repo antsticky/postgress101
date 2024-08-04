@@ -61,6 +61,7 @@ class DBHandler:
         except AttributeError as e:
             return False
 
+
     def create_table(self, table_model: str, engine: Engine):
         table_model.__table__.create(bind=engine, checkfirst=True)
 
