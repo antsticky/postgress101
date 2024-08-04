@@ -8,12 +8,15 @@ packages = [{include = "dbconnector", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
+psutil = "^6.0.0"
 
-
+pydantic = "^2.8.2"
+python-dotenv = "^1.0.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.scripts]
-main = 'dbconnector.main:main'
+main_dbconnector = 'dbconnector.main:main'
+main_logger = 'custom_logger.main:main'
