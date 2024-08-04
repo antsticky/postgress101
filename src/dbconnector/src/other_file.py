@@ -8,6 +8,7 @@ db_logger = get_db_logger(
     level=logging.DEBUG,
 )
 
+
 @pm.memory_usage_logger(db_logger)
 @pm.time_logger(db_logger)
 def src_fn():
@@ -15,5 +16,5 @@ def src_fn():
     import time
 
     time.sleep(1)
-    
-    large_string = "a"*1024*1024*64
+
+    large_string = "a" * 1024 * 1024 * 64
