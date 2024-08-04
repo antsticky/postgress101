@@ -19,13 +19,13 @@ jobs:
          - name: Display Python version
            run: python --version
          - name: Install packages
-           run: pip install black autopep8 isort autoflake
+           run: pip install black autopep8 isort pyflakes
          - name: Formatter
            run: |
             black .
             autopep8 --recursive --in-place --aggressive --aggressive .
             isort .
-            autoflake --in-place .
+            pyflakes .
          - name: Commit and push formatted files
            run: |
             git config --global user.name 'github-actions'
