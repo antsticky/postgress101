@@ -1,7 +1,7 @@
 import logging
 
-from custom_logger import PerformanceLoggers as pm
-from dbconnector import get_db_logger
+from main import PerformanceLoggers as pm
+from main import get_db_logger
 
 db_logger = get_db_logger(
     name=__name__,
