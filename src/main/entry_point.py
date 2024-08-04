@@ -1,7 +1,7 @@
 import logging
 
 from main import get_db_logger
-from main.src.other_file import src_fn
+from main.src.modules.other_file import src_fn
 
 db_logger = get_db_logger(name=__name__, level=logging.DEBUG)
 
