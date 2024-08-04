@@ -8,11 +8,12 @@ class DbLogger(logging.Logger):
         super(DbLogger, self).__init__(name=name, level=level)
 
     def write_to_db(self, msg: str, table_name: str):
-        print("----------------------------")
-        print(f"Message: {msg}")
-        print(table_name)
-        print(self.extras)
-        print("----------------------------")
+        # print("----------------------------")
+        # print(f"Message: {msg}")
+        # print(table_name)
+        # print(self.extras)
+        # print("----------------------------")
+        pass
 
     def setExtras(self, extras: dict):
         self.extras = DBLoggerExtras(**extras)
