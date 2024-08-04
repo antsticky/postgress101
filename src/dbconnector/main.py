@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import (MetaData, create_engine)
+from sqlalchemy import MetaData, create_engine
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import sessionmaker
