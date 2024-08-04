@@ -1,6 +1,8 @@
-name: Format Python Code
+name: 
+    Format Python Code
 
-on: push
+on:
+    push
 
 permissions:
   contents: write  # Grant write access to the repository contents
