@@ -1,11 +1,9 @@
 import logging
 
-from dbconnector.src.other_file import src_fn
 from dbconnector import get_db_logger
+from dbconnector.src.other_file import src_fn
 
-db_logger = get_db_logger(
-    name=__name__,
-    level=logging.DEBUG)
+db_logger = get_db_logger(name=__name__, level=logging.DEBUG)
 
 
 def main():

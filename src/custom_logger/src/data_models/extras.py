@@ -9,7 +9,7 @@ class TableName(BaseModel):
     info: str
     warning: str
     error: str
-    
+
 
 class DBLoggerExtras(Extras):
     host: str

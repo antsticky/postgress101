@@ -19,14 +19,18 @@ class DbLogger(logging.Logger):
 
     def info(self, msg: str, *args, **kwargs):
         self.write_to_db(msg=msg, table_name=self.extras.table_names.info)
-        return super(DbLogger, self).info(f"{msg} - {self.extras.table_names.info}", *args, **kwargs)
-
+        return super(DbLogger, self).info(
+            f"{msg} - {self.extras.table_names.info}", *args, **kwargs
+        )
 
     def warning(self, msg: str, *args, **kwargs):
         self.write_to_db(msg=msg, table_name=self.extras.table_names.warning)
-        return super(DbLogger, self).warning(f"{msg} - {self.extras.table_names.warning}", *args, **kwargs)
-    
-    
+        return super(DbLogger, self).warning(
+            f"{msg} - {self.extras.table_names.warning}", *args, **kwargs
+        )
+
     def error(self, msg: str, *args, **kwargs):
         self.write_to_db(msg=msg, table_name=self.extras.table_names.error)
-        return super(DbLogger, self).error(f"{msg} - {self.extras.table_names.error}", *args, **kwargs)
+        return super(DbLogger, self).error(
+            f"{msg} - {self.extras.table_names.error}", *args, **kwargs
+        )

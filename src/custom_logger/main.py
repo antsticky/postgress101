@@ -6,7 +6,12 @@ from custom_logger import DataModels, get_logger
 def main():
     logger = get_logger(
         __name__,
-        extras=DataModels.DBLoggerExtras(host="0.0.0.0", port=1234, user="root", password="password", db="test_db"),
+        extras=DataModels.DBLoggerExtras(
+            host="0.0.0.0",
+            port=1234,
+            user="root",
+            password="password",
+            db="test_db"),
         logger_type="db_logger",
         level=logging.DEBUG,
     )
