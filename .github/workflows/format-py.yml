@@ -1,5 +1,10 @@
 name: Format Python Code
+
 on: push
+
+permissions:
+  contents: write  # Grant write access to the repository contents
+
 jobs:
     python-code-format:
         runs-on: ubuntu-20.04
