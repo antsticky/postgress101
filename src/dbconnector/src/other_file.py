@@ -1,6 +1,6 @@
 import logging
 
-from custom_logger import performance_monitors as pm
+from custom_logger import PerformanceLoggers as pm
 from dbconnector import get_db_logger
 
 db_logger = get_db_logger(
