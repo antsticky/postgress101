@@ -1,13 +1,10 @@
 import os
 from datetime import datetime
 
-from sqlalchemy import (Column, Float, ForeignKey, Integer, MetaData,
-                        PrimaryKeyConstraint, Sequence, String, create_engine)
+from sqlalchemy import (MetaData, create_engine)
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import OperationalError
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import backref, relationship, sessionmaker
-from sqlalchemy.sql import *
+from sqlalchemy.orm import sessionmaker
 
 from dbconnector.src.table_models.loggings import (ErrorTable, InfoTable,
                                                    WarningTable)
