@@ -9,9 +9,11 @@ def time_logger(logger, *args, **kwargs):
             start = time()
             result = f(*args, **kwargs)
             elapsed = time() - start
-            
+
             logger.info("%s took %f seconds to finish" % (f.__name__, elapsed))
-            
+
             return result
+
         return wrapper
+
     return timed
