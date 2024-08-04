@@ -20,15 +20,16 @@ def get_logger(
 
         raise ValueError("Invalid logger type")
 
+    def set_extras(logger):
+        if isinstance(extras, Extras):
+            logger.setExtras(extras=extras.model_dump())
+        if isinstance(extras, dict):
+            logger.setExtras(extras=extras)
+
     select_custom_logger()
     logging.basicConfig(level=level, format=format)
-
     logger = logging.getLogger(name=name)
-
-    if isinstance(extras, Extras):
-        logger.setExtras(extras=extras.model_dump())
-    else:
-        logger.setExtras(extras=extras)
+    set_extras(logger)
 
     logger.setLevel(level)
 

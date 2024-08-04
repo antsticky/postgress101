@@ -1,11 +1,9 @@
 import logging
 
-from custom_logger import get_logger
+from dbconnector import get_db_logger
 
-db_logger = get_logger(
+db_logger = get_db_logger(
     name=__name__,
-    logger_type="db_logger",
-    extras={"host": "localhost"},
     level=logging.DEBUG,
 )
 

@@ -1,13 +1,10 @@
 import logging
 
-from custom_logger import get_logger
 from dbconnector.src.other_file import src_fn
+from dbconnector import get_db_logger
 
-db_logger = get_logger(
-    __name__,
-    extras={
-        "host": "localhost"},
-    logger_type="db_logger",
+db_logger = get_db_logger(
+    name=__name__,
     level=logging.DEBUG)
 
 
