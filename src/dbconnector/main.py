@@ -1,4 +1,3 @@
-import os
 from datetime import datetime
 
 from sqlalchemy import (MetaData, create_engine)
@@ -6,8 +5,7 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import sessionmaker
 
-from dbconnector.src.table_models.loggings import (ErrorTable, InfoTable,
-                                                   WarningTable)
+from dbconnector.src.table_models.loggings import ErrorTable
 
 DB_HOST = "localhost"
 DB_PORT = 5432
