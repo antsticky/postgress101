@@ -14,6 +14,7 @@ def get_logger(
     extras: dict | Extras = None,
     format: str = LOG_FORMAT,
 ) -> logging.Logger:
+    print("inside GET LOGGER")
     def select_custom_logger():
         if logger_type == "db_logger":
             return logging.setLoggerClass(DbLogger)
@@ -22,9 +23,13 @@ def get_logger(
 
     def set_extras(logger):
         if isinstance(extras, Extras):
+            print("EXTRAS")
             logger.setExtras(extras=extras.model_dump())
-        if isinstance(extras, dict):
+        elif isinstance(extras, dict):
+            print("DICT")
             logger.setExtras(extras=extras)
+        else:
+            print("extras was not set")
 
     select_custom_logger()
     logging.basicConfig(level=level, format=format)
@@ -33,4 +38,5 @@ def get_logger(
 
     logger.setLevel(level)
 
+    print("Itt még van extras")
     return logger

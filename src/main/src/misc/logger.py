@@ -2,7 +2,9 @@ import os
 
 from dotenv import load_dotenv
 
+print("logger.py imports - start")
 from custom_logger import DataModels, get_logger
+print("logger.py imports - end")
 
 load_dotenv()
 
@@ -11,7 +13,7 @@ extras = DataModels.DBLoggerExtras(
     port=os.environ.get("DB_PORT"),
     user=os.environ.get("DB_USER"),
     password=os.environ.get("DB_PASSWORD"),
-    db=os.environ.get("DB_NAME"),
+    db_name=os.environ.get("DB_NAME"),
     table_names={
         "info": "logs_info_table",
         "warning": "logs_warning_table",
@@ -19,11 +21,12 @@ extras = DataModels.DBLoggerExtras(
     },
 )
 
-
 def get_db_logger(name, level):
-
-    return get_logger(
+    print("aaaaaaaaaaaaaaaaaa")
+    my_logger = get_logger(
         name=name,
         level=level,
         logger_type="db_logger",
         extras=extras)
+    print("Itt is van extras")
+    return my_logger

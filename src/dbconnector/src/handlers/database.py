@@ -13,7 +13,9 @@ class DBHandler:
             password: str,
             host: str,
             port: int,
-            db_name: str):
+            db_name: str,
+            **_, # ignore extra params
+            ):
         self.user = user
         self.password = password
         self.host = host
@@ -25,14 +27,25 @@ class DBHandler:
 
     def get_engine(self):
         try:
+            print(self.__create__connection_string())
+            print(type(self.__create__connection_string()))
+            print("***************")
+            print("befor 3 init")
             engine = create_engine(self.__create__connection_string())
+            print("after 3 init")
+            print("***************")
+            import sys
+            # sys.exit(1)
             engine.connect()
+            sys.exit(1)
             return engine
         except OperationalError as e:
             raise DBConnectionError(
                 message=f"Failed to connect {self.host}:{self.port}/{self.db_name}",
                 reason=e,
             )
+        import sys
+        sys.exit(1)
 
     def check_if_table_exists(self, table_name: str, engine: Engine):
         try:

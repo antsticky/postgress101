@@ -16,5 +16,5 @@ class DBLoggerExtras(Extras):
     port: int
     user: str
     password: str
-    db: str
+    db_name: str
     table_names: TableName
