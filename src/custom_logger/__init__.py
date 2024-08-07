@@ -1,4 +1,4 @@
 from custom_logger.src import data_models as DataModels
-from custom_logger.src.logger_v2 import get_logger
+from custom_logger.src.logger import get_logger
 
 __all__ = ["DataModels", "get_logger"]
