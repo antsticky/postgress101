@@ -7,30 +7,16 @@ from custom_logger.src.loggers.dblogger import DbLogger
 LOG_FORMAT = "[%(levelname)s] %(asctime)s | %(name)s - %(message)s"
 
 
-def get_logger(
-    name: str,
-    logger_type: Literal["db_logger"],
-    level: logging.ERROR | logging.WARNING | logging.INFO | logging.DEBUG,
-    extras: dict | Extras = None,
-    format: str = LOG_FORMAT,
-) -> logging.Logger:
-    def select_custom_logger():
-        if logger_type == "db_logger":
-            return logging.setLoggerClass(DbLogger)
-
-        raise ValueError("Invalid logger type")
-
-    def set_extras(logger):
-        if isinstance(extras, Extras):
-            logger.setExtras(extras=extras.model_dump())
-        if isinstance(extras, dict):
-            logger.setExtras(extras=extras)
-
-    select_custom_logger()
-    logging.basicConfig(level=level, format=format)
+def get_logger(name, handlers):
     logger = logging.getLogger(name=name)
-    set_extras(logger)
-
-    logger.setLevel(level)
-
+    logger.setLevel(logging.DEBUG)
+    
+    for handler in handlers:
+        handler.setLevel(handler.log_level)
+        
+        if hasattr(handler, 'log_format'):
+            formatter = logging.Formatter(handler.log_format)    
+            handler.setFormatter(formatter)
+        logger.addHandler(handler)
+    
     return logger
