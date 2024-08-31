@@ -35,6 +35,5 @@ def main():
     logger.error("test msg2", extra={"structured_data": {"job_identifier": "value", "error": "korte", "reason": "aaa"}})
     
 
-
 if __name__ == "__main__":
     main()
