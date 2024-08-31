@@ -8,7 +8,7 @@ db_logger = get_db_logger(name=__name__, level=logging.DEBUG)
 
 def main():
 
-    src_fn()
+    # src_fn()
 
     # db_logger.warning("A warning message")
     # db_logger.error("An error message")
