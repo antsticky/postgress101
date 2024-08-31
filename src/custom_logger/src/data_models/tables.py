@@ -28,5 +28,5 @@ class InfoTable(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
     job_identifier = Column(String)
-    message_type = Column(String)
+    info = Column(String)
     value = Column(Float)

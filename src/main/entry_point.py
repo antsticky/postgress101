@@ -1,19 +1,18 @@
-import logging
+from main import get_log_handlers
+from custom_logger.src.logger import get_logger
 
-from main import get_db_logger
 from main.src.modules.other_file import src_fn
 
-db_logger = get_db_logger(name=__name__, level=logging.DEBUG)
 
 
 def main():
+    db_logger = get_logger(
+        name=__name__,
+        handlers=get_log_handlers()
+    )
+    
+    db_logger.error("debug message", {"structured_data": {"job_identifier": "value", "error": "korte", "reason": "aaa"}})
 
-    # src_fn()
-
-    # db_logger.warning("A warning message")
-    # db_logger.error("An error message")
-    # db_logger.critical("A critical message")
-    # db_logger.info("An info message")
-    # db_logger.debug("A debug message")
+    src_fn()
 
     print("EOD")
