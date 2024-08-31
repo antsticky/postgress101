@@ -12,7 +12,16 @@ def time_logger(logger, *args, **kwargs):
             result = f(*args, **kwargs)
             elapsed = time() - start
 
-            logger.info("%s took %f seconds to finish" % (f.__name__, elapsed))
+            logger.info(
+                "%s took %f seconds to finish" % (f.__name__, elapsed),
+                extra={
+                    "structured_data": {
+                        "job_identifier": "value",
+                        "info": f"elapsed_time_{f.__name__}",
+                        "value": elapsed,
+                    }
+                },
+            )
 
             return result
 
@@ -33,6 +42,16 @@ def memory_usage_logger(logger, *args, **kwargs):
 
             logger.info(
                 f"{f.__name__} used {after_memory - before_memory} bytes memory"
+            )
+            logger.error(
+                "debug message",
+                {
+                    "structured_data": {
+                        "job_identifier": "value",
+                        "error": "korte",
+                        "reason": "aaa",
+                    }
+                },
             )
 
             return return_value
