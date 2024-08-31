@@ -1,4 +1,3 @@
-
 class BaseLogHandler:
     def __init__(self, log_level, *args, **kwargs):
         self.log_level = log_level

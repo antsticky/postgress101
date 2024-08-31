@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 from dbconnector.src.handlers.database import DBHandler
@@ -13,6 +14,7 @@ db_handler = DBHandler(
     password=os.environ.get("DB_PASSWORD"),
     db_name=os.environ.get("DB_NAME"),
 )
+
 
 def main():
     try:

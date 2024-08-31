@@ -17,10 +17,10 @@ def time_logger(logger, *args, **kwargs):
                 extra={
                     "structured_data": {
                         "job_identifier": "value",
-                        "info": f"elapsed_time_{f.__name__}", 
-                        "value": elapsed
+                        "info": f"elapsed_time_{f.__name__}",
+                        "value": elapsed,
                     }
-                }
+                },
             )
 
             return result
@@ -43,7 +43,16 @@ def memory_usage_logger(logger, *args, **kwargs):
             logger.info(
                 f"{f.__name__} used {after_memory - before_memory} bytes memory"
             )
-            logger.error("debug message", {"structured_data": {"job_identifier": "value", "error": "korte", "reason": "aaa"}})
+            logger.error(
+                "debug message",
+                {
+                    "structured_data": {
+                        "job_identifier": "value",
+                        "error": "korte",
+                        "reason": "aaa",
+                    }
+                },
+            )
 
             return return_value
 

@@ -1,6 +1,6 @@
 from sqlalchemy import MetaData, create_engine
 from sqlalchemy.engine import Engine
-from sqlalchemy.exc import OperationalError, InvalidRequestError
+from sqlalchemy.exc import InvalidRequestError, OperationalError
 from sqlalchemy.orm import sessionmaker
 
 from dbconnector.src.exceptions.database import DBConnectionError
@@ -51,4 +51,3 @@ class DBHandler:
 
         session.add(data)
         session.commit()
-        
