@@ -1,8 +1,5 @@
 import logging
-from typing import Literal
 
-from custom_logger.src.data_models.extras import Extras
-from custom_logger.src.loggers.dblogger import DbLogger
 
 LOG_FORMAT = "[%(levelname)s] %(asctime)s | %(name)s - %(message)s"
 

@@ -19,3 +19,5 @@ def src_fn():
     time.sleep(1)
 
     large_string = "a" * 1024 * 1024 * 64
+    
+    return large_string
