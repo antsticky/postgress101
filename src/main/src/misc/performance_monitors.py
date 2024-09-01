@@ -16,8 +16,8 @@ def time_logger(logger, *args, **kwargs):
                 "%s took %f seconds to finish" % (f.__name__, elapsed),
                 extra={
                     "structured_data": {
-                        "job_identifier": "value",
-                        "info": f"elapsed_time_{f.__name__}",
+                        "job_identifier": f"{f.__name__}",
+                        "info": "elapsed_time",
                         "value": elapsed,
                     }
                 },
@@ -41,17 +41,14 @@ def memory_usage_logger(logger, *args, **kwargs):
             after_memory = process.memory_info().rss
 
             logger.info(
-                f"{f.__name__} used {after_memory - before_memory} bytes memory"
-            )
-            logger.error(
-                "debug message",
-                {
+                f"{f.__name__} used {after_memory - before_memory} bytes memory",
+                extra={
                     "structured_data": {
-                        "job_identifier": "value",
-                        "error": "korte",
-                        "reason": "aaa",
-                    }
-                },
+                        "job_identifier": f"{f.__name__}",
+                        "info": "used_memory",
+                        "value": after_memory -
+                        before_memory,
+                    }},
             )
 
             return return_value

@@ -53,15 +53,6 @@ class DBLogHandler(BaseLogHandler, logging.Handler):
             table_model=log_data_model, engine=db_engine)
         self.db_handler.insert_data(engine=db_engine, data=structured_message)
 
-        # print(record.levelname)
-        # print(record.processName)
-        # print(record.process)
-        # print(record.pathname)
-        # print(record.name)
-        # print(record.module)
-        # print(record.lineno)
-        # print(record.getMessage())
-
     def emit(self, record):
         db_message = getattr(record, self.structured_data_key, False)
 
