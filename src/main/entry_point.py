@@ -1,22 +1,20 @@
-from custom_logger.src.logger import get_logger
 from main import get_log_handlers
 from main.src.modules.other_file import src_fn
+from custom_logger.src.logger import get_logger
+
+db_logger = get_logger(name=__name__, handlers=get_log_handlers())
 
 
 def main():
-    db_logger = get_logger(name=__name__, handlers=get_log_handlers())
+    src_fn()
 
     db_logger.error(
-        "debug message",
-        {
+        "Authentication need to be enabled",
+        extra={
             "structured_data": {
-                "job_identifier": "value",
-                "error": "korte",
-                "reason": "aaa",
+                "job_identifier": "test_id",
+                "error": "not implemented",
+                "reason": "time",
             }
         },
     )
-
-    src_fn()
-
-    print("EOD")

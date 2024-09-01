@@ -1,8 +1,11 @@
 import logging
 
 from custom_logger.src.data_models.extras import DBLoggerExtras
-from custom_logger.src.data_models.tables import (ErrorTable, InfoTable,
-                                                  WarningTable)
+from custom_logger.src.data_models.tables import (
+    ErrorTable,
+    InfoTable,
+    WarningTable
+)
 from custom_logger.src.handlers.base import BaseLogHandler
 from dbconnector.src.handlers.database import DBHandler
 
@@ -52,15 +55,6 @@ class DBLogHandler(BaseLogHandler, logging.Handler):
         self.db_handler.create_table(
             table_model=log_data_model, engine=db_engine)
         self.db_handler.insert_data(engine=db_engine, data=structured_message)
-
-        # print(record.levelname)
-        # print(record.processName)
-        # print(record.process)
-        # print(record.pathname)
-        # print(record.name)
-        # print(record.module)
-        # print(record.lineno)
-        # print(record.getMessage())
 
     def emit(self, record):
         db_message = getattr(record, self.structured_data_key, False)
