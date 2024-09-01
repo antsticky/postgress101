@@ -17,7 +17,7 @@ def time_logger(logger, *args, **kwargs):
                 extra={
                     "structured_data": {
                         "job_identifier": f"{f.__name__}",
-                        "info": f"elapsed_time",
+                        "info": "elapsed_time",
                         "value": elapsed,
                     }
                 },
@@ -45,7 +45,7 @@ def memory_usage_logger(logger, *args, **kwargs):
                 extra={
                     "structured_data": {
                         "job_identifier": f"{f.__name__}",
-                        "info": f"used_memory",
+                        "info": "used_memory",
                         "value": after_memory - before_memory,
                     }
                 },
