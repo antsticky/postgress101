@@ -1,11 +1,8 @@
 import logging
 
 from custom_logger.src.data_models.extras import DBLoggerExtras
-from custom_logger.src.data_models.tables import (
-    ErrorTable,
-    InfoTable,
-    WarningTable
-)
+from custom_logger.src.data_models.tables import (ErrorTable, InfoTable,
+                                                  WarningTable)
 from custom_logger.src.handlers.base import BaseLogHandler
 from dbconnector.src.handlers.database import DBHandler
 

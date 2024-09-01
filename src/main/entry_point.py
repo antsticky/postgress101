@@ -1,6 +1,6 @@
+from custom_logger.src.logger import get_logger
 from main import get_log_handlers
 from main.src.modules.other_file import src_fn
-from custom_logger.src.logger import get_logger
 
 db_logger = get_logger(name=__name__, handlers=get_log_handlers())
 

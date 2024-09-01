@@ -1,9 +1,8 @@
 import time
 
-from main import PerformanceLoggers as pm
-
-from main import get_log_handlers
 from custom_logger.src.logger import get_logger
+from main import PerformanceLoggers as pm
+from main import get_log_handlers
 
 db_logger = get_logger(name=__name__, handlers=get_log_handlers())
 
@@ -21,7 +20,6 @@ def src_fn():
             }
         },
     )
-
 
     time.sleep(1)
     large_string = "a" * 1024 * 1024 * 64

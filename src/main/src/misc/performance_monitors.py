@@ -46,9 +46,9 @@ def memory_usage_logger(logger, *args, **kwargs):
                     "structured_data": {
                         "job_identifier": f"{f.__name__}",
                         "info": "used_memory",
-                        "value": after_memory - before_memory,
-                    }
-                },
+                        "value": after_memory -
+                        before_memory,
+                    }},
             )
 
             return return_value
