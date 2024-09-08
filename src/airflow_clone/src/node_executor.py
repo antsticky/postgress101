@@ -21,7 +21,6 @@ class Executor:
             self.xargs = {**self.xargs, **{name: value}}
     
     def execute(self, start_node):
-        print(f"start_node.xargs : ", start_node.xargs)
         start_node.run(**self.get_xargs(start_node.xargs))
         
         operations = start_node.next_operations
