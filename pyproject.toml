@@ -23,3 +23,4 @@ build-backend = "poetry.core.masonry.api"
 main = 'main.entry_point:main'
 main_dbconnector = 'dbconnector.main:main'
 main_logger = 'custom_logger.main:main'
+main_airflow = 'airflow_clone.main:main'
